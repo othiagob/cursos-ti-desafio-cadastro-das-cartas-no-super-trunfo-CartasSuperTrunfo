@@ -12,6 +12,7 @@ typedef struct {
     int pontoTuristico;
 } Carta; //Nomiei a struct com Carta, agora vou só adicionar o numero no fim do nome para representar a carta que desejo.
 
+
 //Agora e a funcao para registrar as informacoes digitadas pelo usuario.
 void cadastroCartas(Carta *c, int num){
   getchar();
@@ -51,8 +52,13 @@ void exibirCarta(Carta c, int num){
     printf("AREA:  %.2f Km²\n", c.area);
     printf("PIB: %.2f bilhões de reais\n", c.pib);
     printf("PONTOS TURISTICOS: %d\n", c.pontoTuristico);
+    printf("DENSIDADE POPULACIONAL: %.2f hab/km²\n", (float)c.populacao/c.area);
+    printf("PIB PER CAPITA: %.2f reais\n", (c.pib * 1e9)/c.populacao);
 
-}
+}   //OBS: esse trecho do PIB PER CAPITA: (c.pib * 1e9) serve para colocar o valor digitado pelo usuario em bilhoes.
+    //Por exemplo: Se digitar 699.28 no console, o PIB PER CAPITA sai zerado no fim do programa.
+    //Mas como eu pego este valor 699.28 * 1bilhão isso faz com que o calculo de PIB/POPULACAO tenha a saída correta.
+    //Foi necessário pesquisa no google e ajuda do chatgpt para entender como poderia aplicar uma solução viavel e pratica pra este problema.
 
 //Agora vamos iniciar o programa, chamando a função main e adicionando as funcoes que criamos dentro do corpo dela.
 int main(){
